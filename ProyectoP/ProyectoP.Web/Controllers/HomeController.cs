@@ -26,5 +26,9 @@ namespace ProyectoP.Web.Controllers
 
             return View();
         }
+        public ActionResult Politica()
+        {
+            return View();
+        }
     }
 }
