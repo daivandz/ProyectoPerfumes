@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -29,5 +30,8 @@ namespace ProyectoP.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Perfume> Perfumes { get; set; }
+        public DbSet<Marca> Marcas { get; set; }
     }
 }

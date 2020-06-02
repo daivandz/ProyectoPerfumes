@@ -8,7 +8,7 @@ namespace ProyectoP.Web.Models
 {
     public class Marca
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Name { get; set; }
     }
 }
