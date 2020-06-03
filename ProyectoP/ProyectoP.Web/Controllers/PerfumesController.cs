@@ -53,10 +53,17 @@ namespace ProyectoP.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Name,Description,Gender,Price,ImgUrl,MarcaId")] Perfume perfume)
+        public ActionResult Create(Perfume perfume, HttpPostedFileBase hpb)
         {
             if (ModelState.IsValid)
             {
+                if (hpb != null)
+                {
+                    string nombreArchivo = System.IO.Path.GetFileName(hpb.FileName);
+                    string filePath = "~/Content/img/" + perfume.id + "_" + nombreArchivo;
+                    hpb.SaveAs(Server.MapPath(filePath));
+                    perfume.ImgUrl = perfume.id + "_" + nombreArchivo;
+                }
                 db.Perfumes.Add(perfume);
                 db.SaveChanges();
                 return RedirectToAction("Index");

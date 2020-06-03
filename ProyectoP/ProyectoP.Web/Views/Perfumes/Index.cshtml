@@ -50,7 +50,14 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImgUrl)
+            @if (@item.ImgUrl == null)
+            {
+                <p>NA</p>
+            }
+            else
+            {
+                <img src="~/Content/img/perfil/@item.ImgUrl" class="img-fluid width="300" />
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

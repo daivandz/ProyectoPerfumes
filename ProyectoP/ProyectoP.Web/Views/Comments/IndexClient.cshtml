@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ProyectoP.Web.Models.Comment>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "IndexClient";
+}
+
+<h2>IndexClient</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Perfume.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfume.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coment)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<form action="@Url.Action("CreateClient","Comments")" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Comment</h4>
+        <hr />
+        <div class="form-group">
+            <label class="col-md-2"></label>
+            <div class="col-md-10">
+                <input type="text" name="Usuario" value="@User.Identity.GetUserName()" placeholder="Nombre de la Mascota" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea class="col-md-6">Comentario</textarea>
+            <div class="col-md-10">
+                <input type="text" name="Coment" value="" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label col-md-2">Producto</label>
+                <div class="col-md-10">
+                    <select name="PerfumeId" class="form-control">
+                        <option selected disabled>Elige un producto</option>
+                        @foreach (var item in ViewBag.PerfumeId)
+                        {
+                            <option value="@item.id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>

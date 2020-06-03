@@ -21,11 +21,15 @@
                 {
                     <li class="nav-item">@Html.ActionLink("Perfumes", "Index", "Perfumes")</li>
                     <li class="nav-item">@Html.ActionLink("Marcas", "Index", "Marcas")</li>
+                    <li class="nav-item">@Html.ActionLink("Comentarios", "Index", "Comments")</li>
+
                 }
 
                 @if (User.IsInRole("Client"))
                 {
                     <li class="nav-item">@Html.ActionLink("Perfumes", "IndexClient", "Perfumes")</li>
+                    <li class="nav-item">@Html.ActionLink("Comentarios", "IndexClient", "Comments")</li>
+
                 }
 
                 <li class="nav-item">@Html.ActionLink("Politica de privacidad", "Politica", "Home")</li>

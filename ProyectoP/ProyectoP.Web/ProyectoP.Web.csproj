@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Clase\Utilities.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
@@ -190,8 +191,13 @@
     <Compile Include="Migrations\202006020654481_ThirdMigration.Designer.cs">
       <DependentUpon>202006020654481_ThirdMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006030422459_QuarterMigration.cs" />
+    <Compile Include="Migrations\202006030422459_QuarterMigration.Designer.cs">
+      <DependentUpon>202006030422459_QuarterMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Marca.cs" />
@@ -376,6 +382,12 @@
     <Content Include="Views\Perfumes\Edit.cshtml" />
     <Content Include="Views\Perfumes\Index.cshtml" />
     <Content Include="Views\Perfumes\IndexClient.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\IndexClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006020654481_ThirdMigration.resx">
       <DependentUpon>202006020654481_ThirdMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006030422459_QuarterMigration.resx">
+      <DependentUpon>202006030422459_QuarterMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

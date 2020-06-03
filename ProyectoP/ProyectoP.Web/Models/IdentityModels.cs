@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ProyectoP.Web.Models
 {
+
     // Para agregar datos de perfil del usuario, agregue más propiedades a su clase ApplicationUser. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
     public class ApplicationUser : IdentityUser
     {
@@ -33,5 +34,6 @@ namespace ProyectoP.Web.Models
 
         public DbSet<Perfume> Perfumes { get; set; }
         public DbSet<Marca> Marcas { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
