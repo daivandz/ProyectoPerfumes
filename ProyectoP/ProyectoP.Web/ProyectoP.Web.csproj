@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202006030422459_QuarterMigration.Designer.cs">
       <DependentUpon>202006030422459_QuarterMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006032247396_FifthMigration.cs" />
+    <Compile Include="Migrations\202006032247396_FifthMigration.Designer.cs">
+      <DependentUpon>202006032247396_FifthMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -421,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006030422459_QuarterMigration.resx">
       <DependentUpon>202006030422459_QuarterMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006032247396_FifthMigration.resx">
+      <DependentUpon>202006032247396_FifthMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
