@@ -17,27 +17,39 @@
     <nav class="fixed-top">
         <div class="curve">
             <ul class="nav nav-pills nav-fill">
-                <li class="nav-item">
+                <li class="nav-item cha">
                     <a href="@Url.Action("Index", "Home")" class="btn btn-outline-light">Inicio</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item cha">
                     <a href="@Url.Action("About", "Home")" class="btn btn-outline-light">Acerca de</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item cha">
                     <a href="@Url.Action("Contact", "Home")" class="btn btn-outline-light">Contacto</a>
                 </li>
                 @if (User.IsInRole("Admin"))
                 {
-                    <li class="nav-item">@Html.ActionLink("Perfumes", "Index", "Perfumes")</li>
-                    <li class="nav-item">@Html.ActionLink("Marcas", "Index", "Marcas")</li>
-                    <li class="nav-item">@Html.ActionLink("Comentarios", "Index", "Comments")</li>
+                    <li class="nav-item cha">
+                        <a href="@Url.Action("Index", "Perfumes")" class="btn btn-outline-light">Perfumes</a>
+                    </li>
+                    <li class="nav-item cha">
+                        <a href="@Url.Action("Index", "Marcas")" class="btn btn-outline-light">Marcas</a>
+                    </li>
+                    <li class="nav-item cha">
+                        <a href="@Url.Action("Index", "Comments")" class="btn btn-outline-light">Comentarios</a>
+                    </li>
 
                 }
 
-                <li class="nav-item">@Html.ActionLink("Hombres", "IndexMan", "Perfumes")</li>
-                <li class="nav-item">@Html.ActionLink("Mujeres", "IndexFemale", "Perfumes")</li>
+                <li class="nav-item cha">
+                    <a href="@Url.Action("IndexMan", "Perfumes")" class="btn btn-outline-light">Hombres</a>
+                </li>
+                <li class="nav-item cha">
+                    <a href="@Url.Action("IndexFemale", "Perfumes")" class="btn btn-outline-light">Mujeres</a>
+                </li>
 
-                <li class="nav-item">@Html.ActionLink("Politica de privacidad", "Politica", "Home")</li>
+                <li class="nav-item cha">
+                    <a href="@Url.Action("Politica", "Home")" class="btn btn-outline-light">Politica</a>
+                </li>
                 <span class="navbar-text">
                     @Html.Partial("_LoginPartial")
                 </span>

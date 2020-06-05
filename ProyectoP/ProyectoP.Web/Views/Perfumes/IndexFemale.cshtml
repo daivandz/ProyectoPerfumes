@@ -3,23 +3,24 @@
 @{
     ViewBag.Title = "IndexFemale";
 }
-
-<p>Mujeres</p>
-
-@foreach (var item in Model)
-{
-    if (item.Gender == "Mujer")
-    {
-        <div class="col-xl-3 col-md-6 mb-4 justify-content-center">
-            <div class="card border-left-primary shadow h-100 py-2 col mr-2 justify-content-center">
-                <h5 class="font-weight-bold text-primary text-uppercase mb-1">@item.Name</h5>
-                <a><img width="100" src="@Url.Action("getImage","Perfumes",new { id = item.id })" alt="" /></a>
-                <p>@item.Description</p>
-                <p>@item.Marca</p>
-                <p>$@item.Price</p>
-            </div>
+    <div class="container espacio">
+        <p>Mujeres</p>
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                if (item.Gender == "Mujer")
+                {
+                    <div class="col-xl-3 col-md-6 mb-4 justify-content-center">
+                        <div class="card border-left-primary shadow h-100 py-2 col mr-2 justify-content-center">
+                            <h5 class="font-weight-bold text-primary text-uppercase mb-1">@item.Name</h5>
+                            <a><img width="100" src="@Url.Action("getImage","Perfumes",new { id = item.id })" alt="" /></a>
+                            <p>@item.Description</p>
+                            <p>@item.Marca.Name</p>
+                            <p>$@item.Price</p>
+                        </div>
+                    </div>
+                }
+            }
         </div>
-    }
-}
-
-<a href="@Url.Action("IndexClientFemale","Comments")">Comentarios</a>
+            <a href="@Url.Action("IndexClientFemale","Comments")">Comentarios</a>
+        </div>
