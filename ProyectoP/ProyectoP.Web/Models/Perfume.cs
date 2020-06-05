@@ -24,7 +24,7 @@ namespace ProyectoP.Web.Models
         [Required]
         [Display(Name = "Precio")]
         public decimal Price { get; set; }
-        public string ImgUrl { get; set; }
+        public Byte[] Image { get; set; }
         public int MarcaId { get; set; }
         [ForeignKey("MarcaId")]
         public Marca Marca { get; set; }

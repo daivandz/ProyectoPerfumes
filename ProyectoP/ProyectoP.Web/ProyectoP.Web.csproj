@@ -199,6 +199,14 @@
     <Compile Include="Migrations\202006032247396_FifthMigration.Designer.cs">
       <DependentUpon>202006032247396_FifthMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006052041081_SixthMigration.cs" />
+    <Compile Include="Migrations\202006052041081_SixthMigration.Designer.cs">
+      <DependentUpon>202006052041081_SixthMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006052042204_SeventhMigration.cs" />
+    <Compile Include="Migrations\202006052042204_SeventhMigration.Designer.cs">
+      <DependentUpon>202006052042204_SeventhMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -380,6 +388,8 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\IndexClientMan.cshtml" />
+    <Content Include="Views\Comments\IndexClientFemale.cshtml" />
     <Content Include="Views\Perfumes\Create.cshtml" />
     <Content Include="Views\Perfumes\Delete.cshtml" />
     <Content Include="Views\Perfumes\Details.cshtml" />
@@ -387,8 +397,6 @@
     <Content Include="Views\Perfumes\Index.cshtml" />
     <Content Include="Views\Perfumes\IndexMan.cshtml" />
     <Content Include="Views\Perfumes\IndexFemale.cshtml" />
-    <Content Include="Views\Comments\IndexClientMan.cshtml" />
-    <Content Include="Views\Comments\IndexClientFemale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,6 +433,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006032247396_FifthMigration.resx">
       <DependentUpon>202006032247396_FifthMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006052041081_SixthMigration.resx">
+      <DependentUpon>202006052041081_SixthMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006052042204_SeventhMigration.resx">
+      <DependentUpon>202006052042204_SeventhMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

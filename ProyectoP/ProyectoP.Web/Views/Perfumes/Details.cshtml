@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            Imagen
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            <img src="~/Content/img/perfil/@Model.ImgUrl" width="300" />
+            <img width="100" src="@Url.Action("getImage","Perfumes",new { id = Model.id })" alt="" />
         </dd>
 
     </dl>

@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ProyectoP.Web.Models;
 
@@ -33,6 +37,7 @@ namespace ProyectoP.Web.Controllers
             var perfumes = db.Perfumes.Include(p => p.Marca);
             return View(perfumes.ToList());
         }
+
         // GET: Perfumes/Details/5
         public ActionResult Details(int? id)
         {
@@ -51,7 +56,7 @@ namespace ProyectoP.Web.Controllers
         // GET: Perfumes/Create
         public ActionResult Create()
         {
-            
+            ViewBag.MarcaId = new SelectList(db.Marcas, "id", "Name");
             return View();
         }
 
@@ -60,18 +65,16 @@ namespace ProyectoP.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Perfume perfume, HttpPostedFileBase hpb)
+        public ActionResult Create([Bind(Include = "id,Name,Description,Gender,Price,Image,MarcaId")] Perfume perfume)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            WebImage image = new WebImage(FileBase.InputStream);
+
+            perfume.Image = image.GetBytes();
+
             if (ModelState.IsValid)
             {
-                if (hpb != null)
-                {
-                    string nombreArchivo = System.IO.Path.GetFileName(hpb.FileName);
-                    string filePath = "~/Content/img/" + perfume.id + "_" + nombreArchivo;
-                    hpb.SaveAs(Server.MapPath(filePath));
-                    perfume.ImgUrl = perfume.id + "_" + nombreArchivo;
-                }
-
                 db.Perfumes.Add(perfume);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,8 +105,23 @@ namespace ProyectoP.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Name,Description,Gender,Price,ImgUrl,MarcaId")] Perfume perfume)
+        public ActionResult Edit([Bind(Include = "id,Name,Description,Gender,Price,Image,MarcaId")] Perfume perfume)
         {
+            byte[] imagenActual = null;
+
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase == null)
+            {
+                imagenActual = db.Perfumes.SingleOrDefault(t => t.id == perfume.id).Image;
+            }
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+
+                perfume.Image = image.GetBytes();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(perfume).State = EntityState.Modified;
@@ -148,5 +166,21 @@ namespace ProyectoP.Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult getImage(int id)
+        {
+            Perfume menuk = db.Perfumes.Find(id);
+            byte[] byteImage = menuk.Image;
+
+            MemoryStream memoryStream = new MemoryStream(byteImage);
+            Image image = Image.FromStream(memoryStream);
+
+            memoryStream = new MemoryStream();
+            image.Save(memoryStream, ImageFormat.Jpeg);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, "image/jpg");
+        }
+
     }
 }
