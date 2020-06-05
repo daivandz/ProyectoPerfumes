@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProyectoP.Web.Models.Comment>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "IndexClientFemale";
+}
+
+<h2>Comentarios de perfumes de mujeres</h2>
+
+@foreach (var item in Model)
+{
+    if (item.Perfume.Gender == "Mujer")
+    {
+        <p>@item.Usuario</p>
+        <br />
+        <p>@item.Coment</p>
+        <br />
+        <p>@item.Perfume.Name</p>
+    }
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form action="@Url.Action("CreateClientFemale","Comments")" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Comment</h4>
+            <hr />
+            <div class="form-group">
+                <label class="col-md-2"></label>
+                <div class="col-md-10">
+                    <input type="text" name="Usuario" value="@User.Identity.GetUserName()" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-6">Comentario</label>
+                <div class="col-md-10">
+                    <textarea class="col-md-6" id="com"></textarea>
+                    <input type="text" name="Coment" value="com" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label col-md-2">Producto</label>
+                    <div class="col-md-10">
+                        <select name="PerfumeId" class="form-control">
+                            <option selected disabled>Elige un producto</option>
+                            @foreach (var item in ViewBag.PerfumeId)
+                            {
+                                if (item.Gender == "Mujer")
+                                {
+                                    <option value="@item.id">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+

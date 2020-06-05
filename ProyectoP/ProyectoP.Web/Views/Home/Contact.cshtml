@@ -1,17 +1,72 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<div class="card bg-dark text-white">
+    <img src="~/Content/img/rose-374318_1920.jpg" class="card-img" alt="imagen">
+    <div class="card-img-overlay">
+        <p class="tituloimg">Contáctanos</p>
+    </div>
+</div>
 
-<address>
-    JIREN ROJO<br />
-    GOKU BLACK <br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="container">
+    <section class="mb-4">
+        <p class="text-center w-responsive mx-auto mb-5">
+            ¿Tienes preguntas? No dudes en enviar tus sugerencias. Nuestro equipo respondera en un par de horas.
+        </p>
+        <div class="row">
+            <div class="col-md-9 mb-md-0 mb-5">
+                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="name" name="name" class="form-control">
+                                <label for="name" class="">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="email" name="email" class="form-control">
+                                <label for="email" class="">Correo</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input type="text" id="subject" name="subject" class="form-control">
+                                <label for="subject" class="">Asunto</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                            <div class="md-form">
+                                <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                <label for="message">Mensaje</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center text-md-left">
+                    <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Enviar</a>
+                </div>
+                <div class="status"></div>
+            </div>
+            <div class="col-md-3 text-center">
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <p>Av Castillo de Chapultepec 562</p>
+                    </li>
+
+                    <li>
+                        <p>Telefono: +52 664 607 8400</p>
+                    </li>
+
+                    <li>
+                        <p>eauderose@perfumeria.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+

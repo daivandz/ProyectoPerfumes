@@ -7,64 +7,120 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create","Perfumes")" class="btn btn-sm btn-facebook">Añadir nuevo produucto</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Marca.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @if (@item.ImgUrl == null)
-            {
-                <p>NA</p>
-            }
-            else
-            {
-                <img src="~/Content/img/perfil/@item.ImgUrl" class="img-fluid width="300" />
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+<p class="m-4">
+    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+        <span class="icon btn-icon-split">
+            <i class="fas fa-plus-circle"></i>
+        </span>
+        <span class="text">Nuevo Perfume</span>
+    </a>
+</p>
 
-</table>
+<div class="row justify-content-center m-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="@Url.Action("Details","Perfumes",new { id = item.id })">
+                <div class="card border-left-primary shadow h-100 py-2 bg-info">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs text-white text-uppercase mb-1">@item.Name</div>
+                                <div class="h5 mb-0 font-weight-bold text-white">@item.Marca.Name</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-paw fa-2x text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-title bg-info">
+                <h6 class="text-center">Nuevo Perfume</h6>
+            </div>
+            <div class="modal-body">
+                <form action="@Url.Action("Create","Perfumes")" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Nombre</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Name" value="" placeholder="Nombre del Perfume" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-6">Descripción</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="Description" value="" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Género</label>
+                                <div class="col-md-10">
+                                    <select name="Gender" class="form-control">
+                                        <option selected disabled>Elige un género</option>
+                                        <option>Hombre</option>
+                                        <option>Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-6">Marca</label>
+                                <select name="MarcaId" class="form-control">
+                                    <option selected disabled>Elige una marca</option>
+                                    @foreach (var item in ViewBag.MarcaId)
+                                    {
+                                        <option value="@item.id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-2">Precio</label>
+                                <div class="col-md-10">
+                                    <input type="number" name="Price" value="" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                Fotografia
+                                <div class="col-md-10">
+                                    <input type="file" name="hpb" value="" class="form-control-file" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                       
+                    <div class="col-md-10">
+                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

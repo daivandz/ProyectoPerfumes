@@ -18,14 +18,21 @@ namespace ProyectoP.Web.Controllers
         public ActionResult Index()
         {
             var perfumes = db.Perfumes.Include(p => p.Marca);
+            ViewBag.MarcaId = (from p in db.Marcas select p).ToList();
             return View(perfumes.ToList());
         }
-        public ActionResult IndexClient()
+
+        public ActionResult IndexMan()
         {
             var perfumes = db.Perfumes.Include(p => p.Marca);
             return View(perfumes.ToList());
         }
 
+        public ActionResult IndexFemale()
+        {
+            var perfumes = db.Perfumes.Include(p => p.Marca);
+            return View(perfumes.ToList());
+        }
         // GET: Perfumes/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,7 +51,7 @@ namespace ProyectoP.Web.Controllers
         // GET: Perfumes/Create
         public ActionResult Create()
         {
-            ViewBag.MarcaId = new SelectList(db.Marcas, "id", "Name");
+            
             return View();
         }
 
@@ -53,7 +60,7 @@ namespace ProyectoP.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Perfume perfume, HttpPostedFileBase hpb)
+        public ActionResult Create( Perfume perfume, HttpPostedFileBase hpb)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +71,7 @@ namespace ProyectoP.Web.Controllers
                     hpb.SaveAs(Server.MapPath(filePath));
                     perfume.ImgUrl = perfume.id + "_" + nombreArchivo;
                 }
+
                 db.Perfumes.Add(perfume);
                 db.SaveChanges();
                 return RedirectToAction("Index");

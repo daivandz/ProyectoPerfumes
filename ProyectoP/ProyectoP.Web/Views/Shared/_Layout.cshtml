@@ -4,12 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="~/Content/Site.css">
+
     <title>@ViewBag.Title - Nombre frnaces que se me olvido</title>
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
 </head>
+
 <body>
     <nav class="fixed-top">
         <div class="curve">
@@ -25,12 +28,8 @@
 
                 }
 
-                @if (User.IsInRole("Client"))
-                {
-                    <li class="nav-item">@Html.ActionLink("Perfumes", "IndexClient", "Perfumes")</li>
-                    <li class="nav-item">@Html.ActionLink("Comentarios", "IndexClient", "Comments")</li>
-
-                }
+                <li class="nav-item">@Html.ActionLink("Hombres", "IndexMan", "Perfumes")</li>
+                <li class="nav-item">@Html.ActionLink("Mujeres", "IndexFemale", "Perfumes")</li>
 
                 <li class="nav-item">@Html.ActionLink("Politica de privacidad", "Politica", "Home")</li>
                 <span class="navbar-text">
@@ -48,9 +47,11 @@
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
 

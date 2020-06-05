@@ -375,23 +375,20 @@
     <Content Include="Views\Marcas\Details.cshtml" />
     <Content Include="Views\Marcas\Edit.cshtml" />
     <Content Include="Views\Marcas\Index.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
-    <Content Include="Views\Usuarios\Delete.cshtml" />
-    <Content Include="Views\Usuarios\Details.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Perfumes\Create.cshtml" />
-    <Content Include="Views\Perfumes\Delete.cshtml" />
-    <Content Include="Views\Perfumes\Details.cshtml" />
-    <Content Include="Views\Perfumes\Edit.cshtml" />
-    <Content Include="Views\Perfumes\Index.cshtml" />
-    <Content Include="Views\Perfumes\IndexClient.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Comments\IndexClient.cshtml" />
+    <Content Include="Views\Perfumes\Create.cshtml" />
+    <Content Include="Views\Perfumes\Delete.cshtml" />
+    <Content Include="Views\Perfumes\Details.cshtml" />
+    <Content Include="Views\Perfumes\Edit.cshtml" />
+    <Content Include="Views\Perfumes\Index.cshtml" />
+    <Content Include="Views\Perfumes\IndexMan.cshtml" />
+    <Content Include="Views\Perfumes\IndexFemale.cshtml" />
+    <Content Include="Views\Comments\IndexClientMan.cshtml" />
+    <Content Include="Views\Comments\IndexClientFemale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

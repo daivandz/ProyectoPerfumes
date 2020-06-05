@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ProyectoP.Web.Models.Perfume>
+
+@{
+    ViewBag.Title = "IndexMan";
+}
+
+<p>Hombres</p>
+
+@foreach (var item in Model)
+{
+    if (item.Gender == "Hombre")
+    {
+        <div class="col-xl-3 col-md-6 mb-4 justify-content-center">
+            <div class="card border-left-primary shadow h-100 py-2 col mr-2 justify-content-center">
+                <h5 class="font-weight-bold text-primary text-uppercase mb-1">@item.Name</h5>
+                <a><img width="100" src="@item.ImgUrl" alt="" /></a>
+                <p>@item.Description</p>
+                <p>@item.Marca</p>
+                <p>$@item.Price</p>
+            </div>
+        </div>
+    }
+}
+
+<a href="@Url.Action("IndexClientMan","Comments")">Comentarios</a>

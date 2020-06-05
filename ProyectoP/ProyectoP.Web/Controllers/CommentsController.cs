@@ -21,7 +21,14 @@ namespace ProyectoP.Web.Controllers
             return View(comments.ToList());
         }
 
-        public ActionResult IndexClient()
+        public ActionResult IndexClientMan()
+        {
+            var comments = db.Comments.Include(c => c.Perfume);
+            ViewBag.PerfumeId = (from p in db.Perfumes select p).ToList();
+            return View(comments.ToList());
+        }
+
+        public ActionResult IndexClientFemale()
         {
             var comments = db.Comments.Include(c => c.Perfume);
             ViewBag.PerfumeId = (from p in db.Perfumes select p).ToList();
@@ -69,7 +76,7 @@ namespace ProyectoP.Web.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult CreateClient()
+        public ActionResult CreateClientMan()
         {
             ViewBag.PerfumeId = new SelectList(db.Perfumes, "id", "Name");
             return View();
@@ -80,13 +87,38 @@ namespace ProyectoP.Web.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateClient(Comment comment)
+        public ActionResult CreateClientMan(Comment comment)
         {
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("IndexClient");
+                return RedirectToAction("IndexClientMan");
+            }
+
+            ViewBag.PerfumeId = new SelectList(db.Perfumes, "id", "Name", comment.PerfumeId);
+            return View(comment);
+        }
+
+        // GET: Comments/Create
+        public ActionResult CreateClientFemale()
+        {
+            ViewBag.PerfumeId = new SelectList(db.Perfumes, "id", "Name");
+            return View();
+        }
+
+        // POST: Comments/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateClientFemale(Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("IndexClientFemale");
             }
 
             ViewBag.PerfumeId = new SelectList(db.Perfumes, "id", "Name", comment.PerfumeId);
