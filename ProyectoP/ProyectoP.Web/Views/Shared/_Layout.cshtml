@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="~/Content/Site.css">
 
-    <title>@ViewBag.Title - Nombre frnaces que se me olvido</title>
+    <title>@ViewBag.Title - EAU DE ROSE</title>
 
     @Styles.Render("~/Content/css")
 
@@ -17,9 +17,15 @@
     <nav class="fixed-top">
         <div class="curve">
             <ul class="nav nav-pills nav-fill">
-                <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home")</li>
-                <li class="nav-item">@Html.ActionLink("Acerca de", "About", "Home")</li>
-                <li class="nav-item">@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-outline-light">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("About", "Home")" class="btn btn-outline-light">Acerca de</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Contact", "Home")" class="btn btn-outline-light">Contacto</a>
+                </li>
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="nav-item">@Html.ActionLink("Perfumes", "Index", "Perfumes")</li>
@@ -39,12 +45,33 @@
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div>
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
+        <div class="container body-content">
+            <footer class="page-footer font-small teal pt-4">
+                <div class="container-fluid text-center text-md-left">
+                    <div class="row">
+                        <div class="col-md-6 mt-md-0 mt-3">
+                            <h5 class="text-uppercase font-weight-bold titulos">Privacidad</h5>
+                            <p class="centrado">
+                                Todos los contenidos de este Sitio (Incluyendo, pero no limitado a, texto, logotipos, contenido, fotografías, audio, botones, nombres comerciales y vídeo) están sujetos a derechos de propiedad por las leyes de Derechos de Autor y demás Leyes relativas Internacionales a "EAU DE ROSE" y de terceros titulares de los mismos que han autorizado debidamente su inclusión.
+                            </p>
+                        </div>
+                        <hr class="clearfix w-100 d-md-none pb-3">
+                        <div class="col-md-6 mb-md-0 mb-3">
+                            <h5 class="text-uppercase font-weight-bold titulos">EAU DE ROSE</h5>
+                            <center>
+                                <img src="~/Content/img/logo-removebg-preview.png" class="logo" alt="Descripción de la imagen">
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-3">
+                    © 2020 Copyright: EAU DE ROSE
+                </div>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/modernizr")

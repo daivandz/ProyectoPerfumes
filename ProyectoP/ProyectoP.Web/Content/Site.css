@@ -8,14 +8,50 @@
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.36);
 }
 
-p{
+.tituloimg {
+    font-size: 130px;
+    text-align: center;
+    padding-top: 60px;
+    font-style: oblique;
+    font-family: cursive;
+}
+
+.titulofooter {
+    font-size: 80px;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.espacio {
+    padding-top: 100px;
+}
+
+.foto {
+    height: 950px;
+    width: 100%;
+}
+
+.centrado {
     text-align: justify;
 }
 
-button:hover {
-    cursor: pointer;
+.titulos {
+    text-align: center;
 }
 
-body{
-    padding-top: 40px;
+.logo {
+    width: 250px;
+    height: 150px;
 }
+
+.tituloscard {
+    text-align: center;
+    font-size: 35px;
+}
+
+.centradocard {
+    text-align: justify;
+    font-size: 20px;
+}
+
+
